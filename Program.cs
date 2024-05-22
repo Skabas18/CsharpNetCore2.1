@@ -13,8 +13,29 @@ namespace CoreEscuela
             var engine = new EscuelaEngine();
             engine.Inicializar();
             Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");
-            Printer.Beep(10000, cantidad:10);
+            // Printer.Beep(10000, cantidad:1);
             ImpimirCursosEscuela(engine.Escuela);
+
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.WriteTitle("Pruebas de Poliformismo");
+
+            var alumnoTest = new Alumno{ Nombre = "Claire UnderWood"};
+            ObjetoEscuelaBase ob = alumnoTest;
+
+            Printer.WriteTitle("Alumno");
+            WriteLine($"Alumno: {alumnoTest.Nombre}");
+            WriteLine($"ID: {alumnoTest.UniqueId}");
+            WriteLine($"Type: {alumnoTest.GetType()}");
+
+
+            Printer.WriteTitle("ObjetoEscuela");
+            WriteLine($"Alumno: {ob.Nombre}");
+            WriteLine($"ID: {ob.UniqueId}");
+            WriteLine($"Type: {ob.GetType()}");
+
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)
@@ -31,5 +52,7 @@ namespace CoreEscuela
                 }
             }
         }
+
+        
     }
 }
