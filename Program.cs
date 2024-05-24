@@ -36,6 +36,25 @@ namespace CoreEscuela
             WriteLine($"ID: {ob.UniqueId}");
             WriteLine($"Type: {ob.GetType()}");
 
+            var objDummy = new ObjetoEscuelaBase(){Nombre = "Frank Underwood"};
+            Printer.WriteTitle("ObjetoEscuelaBase");
+            WriteLine($"Alumno: {objDummy.Nombre}");
+            WriteLine($"Alumno: {objDummy.UniqueId}");
+            WriteLine($"Alumno: {objDummy.GetType()}");
+
+            var evaluacion =  new Evaluacion() { Nombre = "Evaluacion de math" , Nota= 4.5f};
+            Printer.WriteTitle("Evaluacion");
+            WriteLine($"evaluacion: {evaluacion.Nombre}");
+            WriteLine($"evaluacion: {evaluacion.UniqueId}");
+            WriteLine($"evaluacion: {evaluacion.Nota}");
+            WriteLine($"evaluacion: {evaluacion.GetType()}");
+
+            ob = evaluacion;
+            Printer.WriteTitle("ObjetoEscuela");
+            WriteLine($"Alumno: {ob.Nombre}");
+            WriteLine($"ID: {ob.UniqueId}");
+            WriteLine($"Type: {ob.GetType()}");
+
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)
