@@ -28,6 +28,49 @@ namespace CoreEscuela
         }
 
         public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool treaCursos = true
+        )
+        {
+            return GetObjetoEscuelas(out int dummy, out dummy, out dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+            out int conteoEvaluacioines,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool treaCursos = true
+        )
+        {
+            return GetObjetoEscuelas(out conteoEvaluacioines, out int dummy, out dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+            out int conteoEvaluacioines, out int conteoCursos,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool treaCursos = true
+        )
+        {
+            return GetObjetoEscuelas(out conteoEvaluacioines, out conteoCursos, out int dummy, out dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+            out int conteoEvaluacioines, out int conteoCursos,out int conteoAsignaturas,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool treaCursos = true
+        )
+        {
+            return GetObjetoEscuelas(out conteoEvaluacioines, out conteoCursos, out conteoAsignaturas, out int dummy);
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
             out int conteoEvaluacioines,
             out int conteoAlumnos,
             out int conteoAsignaturas,
@@ -38,7 +81,7 @@ namespace CoreEscuela
             bool treaCursos = true
         )
         {
-            conteoEvaluacioines = conteoAsignaturas= conteoAlumnos= 0;
+            conteoEvaluacioines = conteoAsignaturas = conteoAlumnos = 0;
             var listaObje = new List<ObjetoEscuelaBase>();
             listaObje.Add(Escuela);
             if (treaCursos)
