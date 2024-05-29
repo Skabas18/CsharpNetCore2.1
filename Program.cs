@@ -16,15 +16,22 @@ namespace CoreEscuela
             Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");
             // Printer.Beep(10000, cantidad:1);
             ImpimirCursosEscuela(engine.Escuela);
-            var listaObjetos = engine.GetObjetoEscuelas(
-                out int conteoEvaluacioines,
-                out int conteoAlumnos,
-                out int conteoAsignaturas,
-                out int conteoCursos
-            );
-            // var listaILugar = from obj in listaObjetos where obj is ILugar select (ILugar)obj;
-
-            // engine.Escuela.LimpiarLugar();
+            Dictionary<int, string> diccionario = new Dictionary<int, string>();
+            diccionario.Add(10, "Sebas");
+            diccionario.Add(23, "Lorem Ipsom");
+            foreach (var keyValPair in diccionario)
+            {
+                WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
+            }
+            Printer.WriteTitle("Acceso al Diccionario");
+            diccionario[0] = "Pekerman";
+            WriteLine(diccionario[0]);
+            Printer.WriteTitle("Otro diccionario");
+            var dic = new Dictionary<string, string>();
+            dic["Luna"] = "Cuerpo celeste que gira alrededor de la tierra";
+            WriteLine(dic["Luna"]);
+            dic["Luna"] = "Protagonista de soy luna";
+            WriteLine(dic["Luna"]);
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)
