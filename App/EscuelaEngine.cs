@@ -27,7 +27,7 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
@@ -37,7 +37,7 @@ namespace CoreEscuela
             return GetObjetoEscuelas(out int dummy, out dummy, out dummy, out dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             out int conteoEvaluacioines,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -48,7 +48,7 @@ namespace CoreEscuela
             return GetObjetoEscuelas(out conteoEvaluacioines, out int dummy, out dummy, out dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             out int conteoEvaluacioines, out int conteoCursos,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -59,7 +59,7 @@ namespace CoreEscuela
             return GetObjetoEscuelas(out conteoEvaluacioines, out conteoCursos, out int dummy, out dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             out int conteoEvaluacioines, out int conteoCursos,out int conteoAsignaturas,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -70,7 +70,7 @@ namespace CoreEscuela
             return GetObjetoEscuelas(out conteoEvaluacioines, out conteoCursos, out conteoAsignaturas, out int dummy);
         }
 
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             out int conteoEvaluacioines,
             out int conteoAlumnos,
             out int conteoAsignaturas,
@@ -105,7 +105,7 @@ namespace CoreEscuela
                     }
                 }
             }
-            return listaObje;
+            return listaObje.AsReadOnly();
         }
 
         #region Metodos de carga
