@@ -23,15 +23,8 @@ namespace CoreEscuela
             {
                 WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
             }
-            Printer.WriteTitle("Acceso al Diccionario");
-            diccionario[0] = "Pekerman";
-            WriteLine(diccionario[0]);
-            Printer.WriteTitle("Otro diccionario");
-            var dic = new Dictionary<string, string>();
-            dic["Luna"] = "Cuerpo celeste que gira alrededor de la tierra";
-            WriteLine(dic["Luna"]);
-            dic["Luna"] = "Protagonista de soy luna";
-            WriteLine(dic["Luna"]);
+           var dictmp = engine.GetDiccionarioObjetos();
+           
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)

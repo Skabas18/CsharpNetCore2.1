@@ -27,6 +27,15 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
+        public Dictionary<string, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
+        {
+            var diccionario = new Dictionary<string, IEnumerable<ObjetoEscuelaBase>>();
+            diccionario.Add("Escuela", new[] { Escuela });
+            diccionario.Add("Cursos", Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+
+            return diccionario;
+        }
+
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -49,25 +58,38 @@ namespace CoreEscuela
         }
 
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
-            out int conteoEvaluacioines, out int conteoCursos,
+            out int conteoEvaluacioines,
+            out int conteoCursos,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
             bool treaCursos = true
         )
         {
-            return GetObjetoEscuelas(out conteoEvaluacioines, out conteoCursos, out int dummy, out dummy);
+            return GetObjetoEscuelas(
+                out conteoEvaluacioines,
+                out conteoCursos,
+                out int dummy,
+                out dummy
+            );
         }
 
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
-            out int conteoEvaluacioines, out int conteoCursos,out int conteoAsignaturas,
+            out int conteoEvaluacioines,
+            out int conteoCursos,
+            out int conteoAsignaturas,
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
             bool traeAsignaturas = true,
             bool treaCursos = true
         )
         {
-            return GetObjetoEscuelas(out conteoEvaluacioines, out conteoCursos, out conteoAsignaturas, out int dummy);
+            return GetObjetoEscuelas(
+                out conteoEvaluacioines,
+                out conteoCursos,
+                out conteoAsignaturas,
+                out int dummy
+            );
         }
 
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(
