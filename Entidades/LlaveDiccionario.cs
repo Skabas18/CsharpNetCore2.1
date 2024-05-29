@@ -7,10 +7,10 @@ namespace CoreEscuela
 {
     public enum LlaveDiccionario
     {
-        Cursos,
-        Alumnos,
-        Asignaturas,
+        Curso,
+        Alumno,
+        Asignatura,
         Escuela,
-        Evaluaciones
+        Evaluacion
     }
 }
