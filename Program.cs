@@ -15,17 +15,11 @@ namespace CoreEscuela
             engine.Inicializar();
             Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");
             // Printer.Beep(10000, cantidad:1);
-            ImpimirCursosEscuela(engine.Escuela);
+            // ImpimirCursosEscuela(engine.Escuela);
             Dictionary<int, string> diccionario = new Dictionary<int, string>();
-            diccionario.Add(10, "Sebas");
-            diccionario.Add(23, "Lorem Ipsom");
-            foreach (var keyValPair in diccionario)
-            {
-                WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
-            }
-           var dictmp = engine.GetDiccionarioObjetos();
-           engine.ImprimirDiccionario(dictmp);
-           
+            var dictmp = engine.GetDiccionarioObjetos();
+            engine.ImprimirDiccionario(dictmp, true);
+
         }
 
         private static void ImpimirCursosEscuela(Escuela escuela)

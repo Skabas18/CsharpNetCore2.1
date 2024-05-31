@@ -48,7 +48,12 @@ namespace CoreEscuela
                             Console.WriteLine("Alumno: " + val.Nombre);
                             break;
                         case LlaveDiccionario.Curso:
-                            Console.WriteLine("Curso: " + val.Nombre + "Cantidad Alumnos: "+ val.Nombre.Count());
+                            var curtmp = val as Curso;
+                            if (curtmp != null)
+                            {
+                                int count = curtmp.Alumnos.Count();
+                                Console.WriteLine("Curso: " + val.Nombre + "Cantidad Alumnos: " + count);
+                            }
                             break;
                         default:
                             Console.WriteLine(val);
@@ -195,7 +200,7 @@ namespace CoreEscuela
                             {
                                 Asignatura = asignatura,
                                 Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
-                                Nota = (float)(5 * rnd.NextDouble()),
+                                Nota = (float)Math.Round(5 * rnd.NextDouble(),2),
                                 Alumno = alumno
                             };
                             alumno.Evaluaciones.Add(ev);
