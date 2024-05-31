@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using CoreEscuela.Entidades;
 using CoreEscuela.Util;
 using static System.Console;
@@ -21,7 +22,9 @@ namespace CoreEscuela
             Dictionary<int, string> diccionario = new Dictionary<int, string>();
             var dictmp = engine.GetDiccionarioObjetos();
             engine.ImprimirDiccionario(dictmp, true);
-
+            var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
+            reporteador.GetListaEvaluacion();
+            
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)
