@@ -23,7 +23,8 @@ namespace CoreEscuela
             var dictmp = engine.GetDiccionarioObjetos();
             engine.ImprimirDiccionario(dictmp, true);
             var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
-            reporteador.GetListaEvaluacion();
+            var evaList = reporteador.GetListaEvaluacion();
+            var listaAsig = reporteador.GetListaAsignaturas();
             
         }
 
