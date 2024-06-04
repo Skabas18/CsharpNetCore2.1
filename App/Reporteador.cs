@@ -54,5 +54,17 @@ namespace CoreEscuela
             }
             return dictaRta;
         }
+
+        public Dictionary<string, IEnumerable<object>> GetPromeAlumnPorAsignatura()
+        {
+            var rta = new Dictionary<string, IEnumerable<object>>();
+            var dicEvalAsig = GetListaEvaluaAsig();
+            foreach (var asigConEval in dicEvalAsig)
+            {
+                var dummy = from eval in asigConEval.Value
+                            select new { eval.Alumno.UniqueId, AlumnoNombre = eval.Alumno.Nombre, NombreEval = eval.Nombre, eval.Nota };
+            }
+            return rta;
+        }
     }
 }
