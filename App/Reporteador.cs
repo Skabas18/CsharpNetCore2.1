@@ -27,17 +27,31 @@ namespace CoreEscuela
                 return new List<Evaluacion>();
             }
         }
-
-        public IEnumerable<Asignatura> GetListaAsignaturas()
+        public IEnumerable<string> GetListaAsignaturas()
         {
-            var listaEvaluaciones = GetListaEvaluacion();
-            return  (from Evaluacion ev in listaEvaluaciones
-                    where ev.Nota >= 3.0f
-                    select ev.Asignatura).Distinct(); ; 
+            return GetListaAsignaturas(out var dummy);
         }
 
-        public Dictionary<string, IEnumerable<Evaluacion>> GetListaEvaluaAsig(){
-            Dictionary<string, IEnumerable<Evaluacion>> dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+        public IEnumerable<string> GetListaAsignaturas(out IEnumerable<Evaluacion> listaEvaluaciones)
+        {
+            listaEvaluaciones = GetListaEvaluacion();
+            return (from Evaluacion ev in listaEvaluaciones
+                    where ev.Nota >= 3.0f
+                    select ev.Asignatura.Nombre).Distinct(); ;
+        }
+
+        public Dictionary<string, IEnumerable<Evaluacion>> GetListaEvaluaAsig()
+        {
+            var dictaRta = new Dictionary<string, IEnumerable<Evaluacion>>();
+            var listaAsig = GetListaAsignaturas(out var listaEval);
+
+            foreach (var asig in listaAsig)
+            {
+                var evalsAsig = from eval in listaEval
+                                where eval.Asignatura.Nombre == asig
+                                select eval;
+                dictaRta.Add(asig, evalsAsig);
+            }
             return dictaRta;
         }
     }
