@@ -27,13 +27,61 @@ namespace CoreEscuela
             var evaList = reporteador.GetListaEvaluacion();
             var listaAsig = reporteador.GetListaAsignaturas();
             var listaEvalAsign = reporteador.GetListaEvaluaAsig();
-            var listPromedioPorAsignatura = reporteador.GetPromeAlumnPorAsignatura(); 
+            var listPromedioPorAsignatura = reporteador.GetPromeAlumnPorAsignatura();
+
+            Printer.WriteTitle("Captura de una Evaluacion por consola");
+            var newEval = new Evaluacion();
+            string nombre, notaString;
+            WriteLine("Ingrese el nombre de la evaluación");
+            Printer.PressEnter();
+            nombre = Console.ReadLine();
+            if (string.IsNullOrEmpty(nombre))
+            {
+                throw new ArgumentException("El valor del nombre no puede ser vacio");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+                WriteLine("Nombre de la evaluación ingresado correctamente");
+
+            }
+
+            WriteLine("Ingrese la nota de la evaluación");
+            Printer.PressEnter();
+            notaString = Console.ReadLine();
+            if (string.IsNullOrEmpty(notaString))
+            {
+                throw new ArgumentException("El valor de la nota no puede ser vacio");
+            }
+            else
+            {
+                try
+                {
+                    newEval.Nota = float.Parse(notaString);
+                    if (newEval.Nota < 0 || newEval.Nota > 5)
+                    {
+                        throw new ArgumentException("La nota debe ser entre 0 y 5");
+                    }
+                    WriteLine("La nota de la evaluación ingresado correctamente");
+                }
+                catch (ArgumentException e)
+                {
+                    WriteLine(e.Message);
+                    WriteLine("Saliendo del programa");
+                }
+                catch (Exception)
+                {
+                    Printer.WriteTitle("El valor de la nota no es un número válido");
+                    WriteLine("Saliendo del programa");
+                }
+            }
+
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)
         {
             Printer.WriteTitle("SALIENDO");
-            Printer.Beep(3000, 1000,3);
+            Printer.Beep(3000, 1000, 3);
             Printer.WriteTitle("SALIO");
         }
 

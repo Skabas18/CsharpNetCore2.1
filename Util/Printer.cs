@@ -1,3 +1,5 @@
+using System.Net;
+using System.Runtime.CompilerServices;
 using static System.Console;
 
 namespace CoreEscuela.Util
@@ -11,18 +13,23 @@ namespace CoreEscuela.Util
 
         public static void WriteTitle(string titulo)
         {
-            var tamaño =titulo.Length + 4;
+            var tamaño = titulo.Length + 4;
             DrawLine(tamaño);
             WriteLine($"| {titulo} |");
             DrawLine(tamaño);
         }
 
-        public static void Beep(int hz = 2000, int tiempo=500, int cantidad =1)
+        public static void Beep(int hz = 2000, int tiempo = 500, int cantidad = 1)
         {
             while (cantidad-- > 0)
             {
                 System.Console.Beep(hz, tiempo);
             }
+        }
+
+        public static void PressEnter()
+        {
+            WriteLine("Presione Enter para continuar");
         }
     }
 }
