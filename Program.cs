@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using CoreEscuela.Entidades;
 using CoreEscuela.Util;
@@ -26,8 +27,7 @@ namespace CoreEscuela
             var evaList = reporteador.GetListaEvaluacion();
             var listaAsig = reporteador.GetListaAsignaturas();
             var listaEvalAsign = reporteador.GetListaEvaluaAsig();
-            var listPromedioPorAsignatura = reporteador.GetPromeAlumnPorAsignatura();
-            
+            var listPromedioPorAsignatura = reporteador.GetPromeAlumnPorAsignatura(); 
         }
 
         private static void AccionDelEvento(object sender, EventArgs e)

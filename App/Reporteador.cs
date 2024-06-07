@@ -61,14 +61,16 @@ namespace CoreEscuela
             var dicEvalAsig = GetListaEvaluaAsig();
             foreach (var asigConEval in dicEvalAsig)
             {
-                var dummy = from eval in asigConEval.Value
-                            group eval by eval.Alumno.UniqueId
-                            into grupoEvalAlumno
-                            select new
-                            {
-                                AlimnoId = grupoEvalAlumno.Key,
-                                Promedio = grupoEvalAlumno.Average(evaluacion => evaluacion.Nota)
-                            };
+                var promAlumn = from eval in asigConEval.Value
+                                group eval by new {eval.Alumno.UniqueId, eval.Alumno.Nombre }
+                                into grupoEvalAlumno
+                                select new AlumnoPromedio
+                                {
+                                    alumnoId = grupoEvalAlumno.Key.UniqueId,
+                                    alumnoNombre = grupoEvalAlumno.Key.Nombre,
+                                    promedio = grupoEvalAlumno.Average(evaluacion => evaluacion.Nota)
+                                };
+                rta.Add(asigConEval.Key, promAlumn);
             }
             return rta;
         }
